@@ -1,16 +1,19 @@
 pipeline {
-    agent {
-        docker { image 'ubuntu'}
-    }
     stages {
         stage('testing') {
             steps {
                 echo '***Hello World from test stage***'
             }
+            agent {
+                docker { image 'ubuntu'}
+            }
         }
         stage ('checking git'){
             steps {
                 sh ('git --version')
+            }
+            agent {
+                docker { image 'ubuntu'}
             }
         }
         stage('aws version') {
@@ -20,6 +23,9 @@ pipeline {
                 sh( 'aws s3 ls | grep jenkins' )
                 sh( 'sleep 38 ' )
                 sh( 'aws s3api delete-bucket --bucket jenkins-bucket-ak-sk --region us-east-1' )
+            }
+            agent {
+                docker { image 'ubuntu'}
             }
         }
     }
