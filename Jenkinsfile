@@ -16,6 +16,7 @@ pipeline {
             steps {
                 echo "***stage for checking aws***"
                 sh( 'aws --version' )
+                sh( 'aws s3 ls' )
             }
         }
     }
