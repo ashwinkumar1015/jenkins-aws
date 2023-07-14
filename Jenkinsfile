@@ -1,6 +1,7 @@
 pipeline {
-    agent any
-
+    agent {
+        docker { image 'ubuntu'}
+    }
     stages {
         stage('testing') {
             steps {
