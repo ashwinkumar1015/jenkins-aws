@@ -13,7 +13,7 @@ pipeline {
                 sh ('git --version')
             }
             agent {
-                docker { image 'ubuntu'}
+                docker { image 'git'}
             }
         }
         stage('aws version') {
@@ -25,7 +25,7 @@ pipeline {
                 sh( 'aws s3api delete-bucket --bucket jenkins-bucket-ak-sk --region us-east-1' )
             }
             agent {
-                docker { image 'ubuntu'}
+                docker { image 'aws'}
             }
         }
     }
