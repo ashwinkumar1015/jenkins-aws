@@ -16,7 +16,7 @@ pipeline {
             steps {
                 echo "***stage for checking aws***"
                 sh( 'aws --version' )
-                sh( 'aws s3 ls' )
+                sh( 'aws s3api create-bucket --bucket jenkins-bucket-ak-sk --region us-east-1' )
             }
         }
     }
