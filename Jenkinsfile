@@ -9,14 +9,6 @@ pipeline {
                 docker { image 'ubuntu'}
             }
         }
-        stage ('checking git'){
-            steps {
-                sh ('git --version')
-            }
-            agent {
-                docker { image 'ubuntu'}
-            }
-        }
         stage('aws version') {
             steps {
                 echo "***stage for creating bucket in aws***"
@@ -26,7 +18,7 @@ pipeline {
                 sh( 'aws s3api delete-bucket --bucket jenkins-bucket-ak-sk --region us-east-1' )
             }
             agent {
-                docker { image 'aws'}
+                docker { image 'depop/awscli-terraform'}
             }
         }
     }
