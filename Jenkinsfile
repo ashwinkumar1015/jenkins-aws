@@ -1,7 +1,5 @@
 pipeline {
-    agent {
-        docker { image 'ubuntu'}
-    }
+    agent none
     stages {
         stage('testing') {
             steps {
@@ -16,7 +14,7 @@ pipeline {
                 sh ('git --version')
             }
             agent {
-                docker { image 'git'}
+                docker { image 'ubuntu'}
             }
         }
         stage('aws version') {
